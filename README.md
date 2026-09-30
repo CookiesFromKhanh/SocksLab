@@ -18,13 +18,13 @@ rather than just reading theory.
                     │   Desktop 1 (i5-12400, 16GB) │
                     │        Proxmox VE host        │
                     │      hostname: pve             │
-                    │   192.168.100.2/24 (mgmt)      │
+                    │   192.168.0.114/24 (mgmt)      │
                     └───────────────┬────────────────┘
                                     │
-        ┌───────────────┬──────────┴──────────┬─────────────────┐
+        ┌───────────────┬──────────┴──────────┬
         │               │                     │
-┌───────▼──────┐ ┌───────▼───────┐   ┌─────────▼────────┐
-│ win10-endpoint│ │ ubuntu-endpoint│   │  Wazuh-SIEM (VM 102)│
+┌───────▼──────┐    ┌───────▼───────┐   ┌─────────▼────────┐
+│ win10-endpoint │ │ ubuntu-endpoint│   │  Wazuh-SIEM (VM 102)│
 │   Windows 10   │ │ Ubuntu Server  │   │   Ubuntu Server      │
 │  + Sysmon      │ │  + Wazuh agent │   │  192.168.0.117        │
 │  + Wazuh agent │ │                │   │  (all-in-one install) │
@@ -70,9 +70,9 @@ Laptop (remote access only, not part of the lab itself) →
 │   │   └── wazuh-rule.xml
 │   └── T1059.001-powershell/
 │       └── ...
-├── journal/
-│   ├── 2026-09-21.md
-│   └── 2026-09-25.md
+├── journals/
+│   ├── 2026-9-30.md
+│   └── ...
 └── assets/
     └── screenshots/
 ```
@@ -81,20 +81,21 @@ Laptop (remote access only, not part of the lab itself) →
 
 - [x] Proxmox VE installed on Desktop 1
 - [x] win10-endpoint, ubuntu-endpoint, Wazuh-SIEM VMs created
-- [ ] Wazuh all-in-one install completed
-- [ ] Sysmon deployed on win10-endpoint
+- [x] Wazuh all-in-one install completed
+- [x] Sysmon deployed on win10-endpoint
 - [ ] First Atomic Red Team test run
 - [ ] First Sigma detection written
 
-## How to reproduce
+## How to reproduce [will do later because I am lazy right now]
 
 1. Install Proxmox VE on the host machine (see `docs/setup/proxmox-setup.md`)
 2. Create the three VMs listed above
 3. Install Wazuh all-in-one on the SIEM VM (see `docs/setup/wazuh-install.md`)
-4. Install Sysmon + Wazuh agent on the Windows endpoint
-5. Install the Wazuh agent on the Linux endpoint
-6. Confirm both agents report into the Wazuh dashboard
-7. Pick a technique from `detections/`, snapshot the target VM, and run the
+4. Install Sysmon + Wazuh agent on the Windows endpoint 
+5. Set up Wazuh agent to work with Sysmon
+6. Install the Wazuh agent on the Linux endpoint
+7. Confirm both agents report into the Wazuh dashboard
+8. Pick a technique from `detections/`, snapshot the target VM, and run the
    Atomic test
 
 ## Detection template
