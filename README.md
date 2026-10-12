@@ -83,7 +83,7 @@ Laptop (remote access only, not part of the lab itself) →
 - [x] win10-endpoint, ubuntu-endpoint, Wazuh-SIEM VMs created
 - [x] Wazuh all-in-one install completed
 - [x] Sysmon deployed on win10-endpoint
-- [ ] First Atomic Red Team test run
+- [x] First Atomic Red Team test run
 - [ ] First Sigma detection written
 
 ## How to reproduce [will do later because I am lazy right now]
